@@ -7,7 +7,7 @@ public class RemovedNumbers {
 		
     //break down n into each individual digit
     long individualDigit;
-    List<long[]> digitsToAdd = new List<long[]>();
+    List<Long> digitsToAdd = new ArrayList<Long>();
     
     while (n > 0) {
         // n % 10 will give us the last digit in the series of numbers
@@ -22,9 +22,9 @@ public class RemovedNumbers {
         digitsToAdd.add(individualDigit);
     }
     
+        //add all digits to get sum of digits
         //multiply each pair of digits
         //compare to sum
-    
     
 		return null;
 	}
