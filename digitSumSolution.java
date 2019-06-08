@@ -7,6 +7,7 @@ public class RemovedNumbers {
 		
     //break down n into each individual digit
     long individualDigit;
+    long sumOfAllDigits;
     List<Long> digitsToAdd = new ArrayList<Long>();
     
     while (n > 0) {
@@ -20,17 +21,24 @@ public class RemovedNumbers {
         
         //store each individual digit
         digitsToAdd.add(individualDigit);
-    }
+    }       
     
-        //add all digits to get sum of digits
+    //add all digits to get sum of digits
+    sumOfAllDigits = addAllDigits(long n);
+        
         //multiply each pair of digits
         //compare to sum
-    
 		return null;
 	}
   
-  	public static void addAllDigits (long n) { 
+  	public static long addAllDigits( List<Long> digitsToAdd) { 
+      long sumOfDigits;
     
+      for(long digit : digitsToAdd) {
+        sumOfDigits = sumOfDigits + digit;
+      }
+      
+        return sumOfDigits;
     }
   
 }
