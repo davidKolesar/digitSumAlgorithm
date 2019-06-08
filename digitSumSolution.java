@@ -8,12 +8,12 @@ public class RemovedNumbers {
     //break down each digit
     int individualDigit;
     
-    while (n > 0) {
-        System.out.println( n % 10);
+	while (n > 0) {
+        System.out.println("The first number is : " + n);
+        System.out.println("The first digit of that number is : " + n % 10);
         n = n / 10;
     }
     
     
 		return null;
 	}
-}
