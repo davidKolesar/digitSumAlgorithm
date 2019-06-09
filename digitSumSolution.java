@@ -7,10 +7,13 @@ public class RemovedNumbers {
 	public static List<long[]> removNb(long n) {
     List<Long> allNumbersInN = new ArrayList<Long>();
 	
-      //get each number between 1 and n
-      for(long i = 0; i < n; i++) {
-          allNumbersInN.add(i);
+    //get each number between 1 and n
+    for(long i = 0; i < n; i++) {
+        allNumbersInN.add(i);
       }
+      
+    // get sum of all numbers in list
+    long sumOfAllNumbers = AddUpAllNumbersInList(allNumbersInN);
     
     //select two digits (exclusive of themselves)
     for(long number : allNumbersInN) {
@@ -21,10 +24,14 @@ public class RemovedNumbers {
             i++;
         }
         long numberToCompare = allNumbersInN.indexOf(i);
+        
+        //subtract each both numbers from sum
+        sumOfAllNumbers = (sumOfAllNumbers -= (number + numberToCompare))
+        
+        
         long productOfTwoNumbers = (numberToCompare * number); 
 
-        //add up all numbers (minus the two in question)
-        long sumOfAllNumbers;
+        
       }
     
     
@@ -39,7 +46,7 @@ public class RemovedNumbers {
       return null;
   }
   
-  private static addUpAllNumbersInList(List<Long> allNumbersInN ) {
+  private static AddUpAllNumbersInList(List<Long> allNumbersInN ) {
     long sumOfAllNumbers = 0;
     for(long number : allNumbersInN) {
     
