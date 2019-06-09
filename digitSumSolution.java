@@ -6,6 +6,7 @@ public class RemovedNumbers {
 	
 	public static List<long[]> removNb(long n) {
     List<Long> allNumbersInN = new ArrayList<Long>();
+    Hashmap<Long, Long> solutions = new Hashmap<Long, Long>();
 	
     //get each number between 1 and n
     for(long i = 0; i < n; i++) {
@@ -26,23 +27,19 @@ public class RemovedNumbers {
         long numberToCompare = allNumbersInN.indexOf(i);
         
         //subtract each both numbers from sum
-        sumOfAllNumbers = (sumOfAllNumbers -= (number + numberToCompare))
+        long numberToSubtract = (number + numberToCompare);
+        sumOfAllNumbers = (sumOfAllNumbers -= numberToSubtract)
         
-        
+        // compare product to sum
         long productOfTwoNumbers = (numberToCompare * number); 
-
         
+        if(productOfTwoNumbers == sumOfAllNumbers){
+          solutions.put (number, numberToCompare);
+        }
+        //add difference back to original sum
+         sumOfAllNumbers = (sumOfAllNumbers += numberToSubtract)
       }
-    
-    
     }
-    
-  
-    
-    
-    
-    //multiply two comparison digits
-    
       return null;
   }
   
