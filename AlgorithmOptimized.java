@@ -1,10 +1,15 @@
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 import org.junit.Test;
+import static java.lang.Math.toIntExact;
+import java.util.HashMap;
+import java.util.Map;
+
 public class RemovedNumbers {
 	
-	public static String removNb(long n) {
+	public static List<long[]> removNb(long n) {
     HashMap<Long, Long> solutions = new HashMap<Long, Long>();
-    String retVal = "";
+    List<long[]> returnValue = new ArrayList<long[]>();
 	      
     // get sum of all numbers in list
     long sumOfAllNumbers =  n*(n+1)/2;
@@ -21,20 +26,25 @@ public class RemovedNumbers {
      */     
       long numberToCompare  = (sumOfAllNumbers-i) / (i+1);
  
-     // ensure number to compare is smaller than nreturnValue
+     // ensure number to compare is smaller than n
      if (numberToCompare < n ) {
        solutions.put(numberToCompare, i);
      }
-
-
+     
+     //put solutions into array
+     long[] answers = new long[solutions.size()];
+     int index = 0;
+     
      for (Map.Entry<Long,Long> entry : solutions.entrySet()) {
-       String key = Long.toString(entry.getKey());
-       String value = Long.toString(entry.getValue());
-
-      retVal = retVal + key + " " + value + "," + " ";
-
+       
+       answers[index] = entry.getKey();
+       answers[index] = entry.getValue();
+       index++;
       }
+    returnValue.add(answers);
+      
     }
-        return retVal;
-  }
+    
+  return returnValue;
+}
 }
