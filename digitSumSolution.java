@@ -9,8 +9,9 @@ public class RemovedNumbers {
     //break down n into each individual digit
     long currentDigit;
     long sumOfAllDigits = 0;
-    List<Long> digitsToAdd = new ArrayList<Long>();
-    List<Long> products = new ArrayList<Long>();
+    List<Integer> digitsToAdd = new ArrayList<Integer>();
+    List<Integer> products = new ArrayList<Integer>();
+    int individualDigit;
     
     while (n > 0) {
         // n % 10 will give us the last digit in the series of numbers
@@ -25,7 +26,7 @@ public class RemovedNumbers {
         *https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#toIntExact-long-
         */
         try {
-          int individualDigit = toIntExact(currentDigit);
+          individualDigit = toIntExact(currentDigit);
         } 
           catch(Exception e) {
             /*
@@ -56,10 +57,10 @@ public class RemovedNumbers {
 		return null;
 	}
   
-  	private static long AddAllDigits( List<Long> digitsToAdd) { 
-      long sumOfDigits = 0;
+  	private static long AddAllDigits( List<Integer> digitsToAdd) { 
+      Integer sumOfDigits = 0;
     
-      for(long digit : digitsToAdd) {
+      for(Integer digit : digitsToAdd) {
         sumOfDigits = sumOfDigits + digit;
       }
       
@@ -67,28 +68,26 @@ public class RemovedNumbers {
     }
     
 /*
- *Uses Iterative Algorithm to generates combinations by combining
+ * Uses Iterative Algorithm to generates combinations by combining
  * all possible *pairs  of multiples (does not work for not permutations)
  */
-private static void generateCombinations(List<Long> digitsToAdd) {
+private static void generateCombinations(List<Integer> digitsToAdd) {
 
-int[] input = {10, 20, 30, 40, 50};    // input array
+Integer k = 3;                             // sequence length   
 
-int k = 3;                             // sequence length   
+List<List<Integer>> subsets = new ArrayList<>();
 
-List<int[]> subsets = new ArrayList<>();
-
-int[] s = new int[k];                  // here we'll keep indices 
+Integer[] s = new Integer[k];                  // here we'll keep indices 
                                        // pointing to elements in input array
 
-if (k <= input.length) {
+if (k <= digitsToAdd.size()) {
     // first index sequence: 0, 1, 2, ...
-    for (int i = 0; (s[i] = i) < k - 1; i++);  
-    subsets.add(getSubset(input, s));
+    for (Integer i = 0; (s[i] = i) < k - 1; i++);  
+    subsets.add(getSubset(digitsToAdd, s));
     for(;;) {
-        int i;
+        Integer i;
         // find position of item that can be incremented
-        for (i = k - 1; i >= 0 && s[i] == input.length - k + i; i--); 
+        for (i = k - 1; i >= 0 && s[i] == digitsToAdd.length - k + i; i--); 
         if (i < 0) {
             break;
         }
@@ -96,17 +95,17 @@ if (k <= input.length) {
         for (++i; i < k; i++) {    // fill up remaining items
             s[i] = s[i - 1] + 1; 
         }
-        subsets.add(getSubset(input, s));
+        subsets.add(getSubset(digitsToAdd, s));
     }
 }
 
 }
 
 // generate actual subset by index sequence
-private static int[] getSubset(int[] input, int[] subset) {
+private static Integer[] getSubset(int[] digitsToAdd, Integer[] subset) {
     int[] result = new int[subset.length]; 
     for (int i = 0; i < subset.length; i++) 
-        result[i] = input[subset[i]];
+        result[i] = digitsToAdd[subset[i]];
     return result;
 }
 
