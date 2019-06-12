@@ -5,6 +5,8 @@ import static java.lang.Math.toIntExact;
 import java.util.HashMap;
 import java.util.Map;
 
+//consider solution posted : https://math.stackexchange.com/questions/3256551/algorithm-for-evaluating-a-sequence-while-removing-from-that-sequence/3256564#3256564
+
 public class RemovedNumbers {
 	
 	public static List<long[]> removNb(long n) {
